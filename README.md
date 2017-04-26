@@ -46,4 +46,7 @@
 - This is how mySql database look like at the begining
 ![screen shot 2017-04-26 at 11 03 33 am](https://cloud.githubusercontent.com/assets/22673626/25449258/12819396-2a70-11e7-8303-9d939b5ebf05.png)
 
+-If you'd like buy 5 of the item 5(ipod touch), datbase will be updated and shows the current stock quantity.
+
+![screen shot 2017-04-26 at 11 07 27 am](https://cloud.githubusercontent.com/assets/22673626/25449450/a7195e30-2a70-11e7-9ddf-220503971f61.png)
 
