@@ -43,3 +43,7 @@
 - MySQL database  
 
 ## Code Explaination and description on how to app works
+- This is how mySql database look like at the begining
+![screen shot 2017-04-26 at 11 03 33 am](https://cloud.githubusercontent.com/assets/22673626/25449258/12819396-2a70-11e7-8303-9d939b5ebf05.png)
+
+
