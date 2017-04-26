@@ -31,51 +31,35 @@ connection.query("SELECT * FROM products", function(err, res) {
 
 
 var itemChoice = function() {
-    inquirer.prompt([
-    {
+    inquirer.prompt([{
 
         name: "item",
-        ///type: "input",
         message: "what is the id number of the item you would like to buy?"
-    },
-    {
-    	name:"quantity",
-		type:"input",
-		message:"How many would like to buy from this item?"
+    }, {
+        name: "quantity",
+        type: "input",
+        message: "How many would like to buy from this item?"
 
-	}
-  		]).then(function(answer) {
-       // console.log(answer.item);
-        var query = "SELECT * FROM products WHERE item_id=?"
+    }]).then(function(answer) {
+        console.log("You Selected:" + answer.item);
+        var query = "SELECT * FROM products WHERE item_id=?";
         connection.query(query, [answer.item],
             function(err, res) {
-                console.log("Selected Item:" + res[0].product_name)// + "\nQuantity:"+ res[0].stock_quantity);
-             if([answer.quantity]>res[0].stock_quantity){
-             	console.log("Insufficient quantity!");
+                console.log("Selected Item:" + res[0].product_name);
+                //console.log(answer.quantity);
+                //console.log(res[0].stock_quantity);
+                if ([answer.quantity] <= res[0].stock_quantity) {
 
-             }else{
-             	connection.query("UPDATE products SET ? WHERE stock_quantity=?",  [answer.quantity],
-
-            	function(err, res) {});
-
-             }  
-
-            
-
+                    connection.query("UPDATE products SET stock_quantity = stock_quantity - ? WHERE item_id = ?", [answer.quantity, answer.item],
+                        function(err, res) {
+                            if (err) throw err;
+                        });
+                    console.log("You got it");
+                    console.log("database updated");
+                } else {
+                    console.log("Insufficient quantity!");
+                }
             });
     });
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
